@@ -7,6 +7,9 @@ import Home from './pages/Home';
 import NoMatch from './pages/NoMatch';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
+import FriendProfile from './pages/FriendProfile.jsx';
+import Friends from './pages/Friends.jsx';
+import UserProfile from './pages/UserProfile.jsx';
 
 
 const router = createBrowserRouter([
@@ -24,6 +27,15 @@ const router = createBrowserRouter([
       }, {
         path: '/signup',
         element: <Signup />
+      }, {
+        path: '/',
+        element: <FriendProfile />
+      }, {
+        path: '/',
+        element: <Friends />
+      }, {
+        path: '/',
+        element: <UserProfile />
       }
     ]
   }
