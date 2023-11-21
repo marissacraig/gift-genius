@@ -1,4 +1,4 @@
-const userInfo = () => {
+const UserInfo = () => {
     return (
       <div className="container">
         userInfo here
@@ -6,4 +6,4 @@ const userInfo = () => {
     );
   };
   
-  export default userInfo;
+  export default UserInfo;
