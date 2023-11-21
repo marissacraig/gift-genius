@@ -4,13 +4,10 @@ import { reducer } from './reducers'
 const StoreContext = createContext();
 const { Provider } = StoreContext;
 
+// eslint-disable-next-line react/prop-types, no-unused-vars
 const StoreProvider = ({ value = [], ...props }) => {
   const [state, dispatch] = useReducer(reducer, {
-    products: [],
-    cart: [],
-    cartOpen: false,
-    categories: [],
-    currentCategory: '',
+   
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
