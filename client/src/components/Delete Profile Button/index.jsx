@@ -7,4 +7,4 @@ const DeleteProfileButton = () => {
     );
   };
   
-  export default DeleteProfi
+  export default DeleteProfileButton;

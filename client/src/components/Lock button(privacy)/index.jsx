@@ -1,4 +1,4 @@
-const lockButton = () => {
+const LockButton = () => {
     return (
       <div className="container">
         LockButton
@@ -6,4 +6,4 @@ const lockButton = () => {
     );
   };
   
-  export default lockButton;
+  export default LockButton;

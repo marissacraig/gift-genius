@@ -1,9 +1,9 @@
-const declineFriendButton = () => {
+const DeclineFriendButton = () => {
     return (
       <div className="container">
-        declineFriendButton
+        DeclineFriendButton
       </div>
     );
   };
   
-  export default declineFriendButton;
+  export default DeclineFriendButton;

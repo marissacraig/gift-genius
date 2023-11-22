@@ -1,4 +1,4 @@
-const removeFriendButton = () => {
+const RemoveFriendButton = () => {
     return (
       <div className="container">
         removeFriendButton
@@ -6,4 +6,4 @@ const removeFriendButton = () => {
     );
   };
   
-  export default removeFriendButton;
+  export default RemoveFriendButton;
