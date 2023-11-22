@@ -1,9 +1,9 @@
-const giftPriceRating = () => {
+const GiftPriceRating = () => {
     return (
       <div className="container">
-        giftPriceRating
+        GiftPriceRating
       </div>
     );
   };
   
-  export default giftPriceRating;
+  export default GiftPriceRating;

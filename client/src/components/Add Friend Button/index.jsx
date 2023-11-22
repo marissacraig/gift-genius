@@ -1,9 +1,9 @@
-const addFriendButton = () => {
+const AddFriendButton = () => {
     return (
       <div className="container">
-        addFriendButton
+        AddFriendButton
       </div>
     );
   };
   
-  export default addFriendButton;
+  export default AddFriendButton;

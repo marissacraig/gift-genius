@@ -1,9 +1,9 @@
-const individualGift = () => {
+const IndividualGift = () => {
     return (
       <div className="container">
-        individualGift
+        IndividualGift
       </div>
     );
   };
   
-  export default individualGift;
+  export default IndividualGift;

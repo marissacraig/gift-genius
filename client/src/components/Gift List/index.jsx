@@ -1,4 +1,4 @@
-const giftList = () => {
+const GiftList = () => {
     return (
       <div className="container">
         This is my list of gifts
@@ -6,4 +6,4 @@ const giftList = () => {
     );
   };
   
-  export default giftList;
+  export default GiftList;

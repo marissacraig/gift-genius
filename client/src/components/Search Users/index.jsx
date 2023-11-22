@@ -1,4 +1,4 @@
-const searchUsers = () => {
+const SearchUsers = () => {
     return (
       <div className="container">
         search other users here
@@ -6,4 +6,4 @@ const searchUsers = () => {
     );
   };
   
-  export default searchUsers;
+  export default SearchUsers;
