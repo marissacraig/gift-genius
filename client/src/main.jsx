@@ -28,13 +28,13 @@ const router = createBrowserRouter([
         path: '/signup',
         element: <Signup />
       }, {
-        path: '/',
+        path: '/friendprofile',
         element: <FriendProfile />
       }, {
-        path: '/',
+        path: '/friends',
         element: <Friends />
       }, {
-        path: '/',
+        path: '/userprofile',
         element: <UserProfile />
       }
     ]
