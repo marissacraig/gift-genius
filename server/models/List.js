@@ -16,4 +16,8 @@ const listSchema = new Schema({
     type: Boolean,
   }
   // TODO: Add items reference
-})
+});
+
+const List = model('List', listSchema);
+
+module.exports = List;
