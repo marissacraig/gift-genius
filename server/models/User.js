@@ -4,27 +4,49 @@ const { Schema } = mongoose;
 const bcrypt = require('bcrypt');
 
 const userSchema = new Schema({
-  firstName: {
+  name: {
     type: String,
     required: true,
     trim: true
   },
-  lastName: {
+  username: {
     type: String,
     required: true,
+    unique: true,
     trim: true
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
+    match: [/.+@.+\..+/, 'Must match an email address!'],
   },
   password: {
     type: String,
     required: true,
     minlength: 5
-  }
+  },
+  birthday: {
+    type: Date
+  },
+  avatar: {
+    type: String
+  },
+  friends: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  ]
+  // TODO: add my lists and saved lists
 });
+
+// virtual property `friendCount` gets number of friends
+userSchema
+  .virtual('friendCount')
+  .get(function () {
+    return this.friends.length;
+  })
 
 // set up pre-save middleware to create password
 userSchema.pre('save', async function(next) {
