@@ -37,8 +37,19 @@ const userSchema = new Schema({
       type: Schema.Types.ObjectId,
       ref: 'User'
     }
+  ],
+  lists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'List'
+    }
+  ],
+  savedLists: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'List'
+    }
   ]
-  // TODO: add my lists and saved lists
 });
 
 // virtual property `friendCount` gets number of friends
