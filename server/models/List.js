@@ -14,8 +14,13 @@ const listSchema = new Schema({
   },
   private: {
     type: Boolean,
-  }
-  // TODO: Add items reference
+  },
+  items: [
+    {
+      type: Schema.Types.ObjectId,
+      ref: 'Item'
+    }
+  ]
 });
 
 const List = model('List', listSchema);
