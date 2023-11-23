@@ -25,9 +25,9 @@ function Nav() {
           <Dropdown.Divider />
           <Dropdown.Item>
             {/* this is not using the Link component to logout or user and then refresh the application to the start */}
-            <a href="/" onClick={() => Auth.logout()}>
+            <Link to="/" onClick={() => Auth.logout()}>
               Logout
-            </a>
+            </Link>
             </Dropdown.Item>
         </Dropdown>
         </div>

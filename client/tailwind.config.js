@@ -1,4 +1,5 @@
-require("tailwindcss"), require("autoprefixer")
+require("tailwindcss") 
+require("autoprefixer")
 
 const { fontFamily } = require("tailwindcss/defaultTheme")
 
