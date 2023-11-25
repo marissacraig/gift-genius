@@ -8,9 +8,14 @@ function Nav() {
     if (Auth.loggedIn()) {
       return (
         <ul className="flex-row">
+           <li className="mx-1">
+            <Link to="/userprofile">
+              Profile
+            </Link>
+          </li>
           <li className="mx-1">
-            <Link to="/orderHistory">
-              Order History
+            <Link to="/friends">
+              Friends
             </Link>
           </li>
           <li className="mx-1">
