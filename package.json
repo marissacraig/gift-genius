@@ -17,7 +17,5 @@
     "concurrently": "^5.1.0"
   },
   "dependencies": {
-    "flowbite": "^2.2.0",
-    "flowbite-react": "^0.6.4"
   }
 }
