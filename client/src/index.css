@@ -1,8 +1,10 @@
 
 :root {
-  --primary: #232F3E;
-  --secondary: #F3A847;
-  --tertiary: #B12704;
+  --primary: #6D78BF;
+  --secondary: #C48F22;
+  --tertiary: #CB534F;
+  --blue: #4FAED9;
+  --green: #53A586;
   --light: #fafafa;
   --dark: #272f32;
   --error: rgb(228, 46, 1);

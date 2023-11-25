@@ -1,11 +1,10 @@
-import { Button } from 'flowbite-react';
-
+import "./index.css"
 
 const DeleteProfileButton = () => {
     return (
-      <div className="container">
-        <Button>Delete Profile</Button>
-      </div>
+      <button className="delete-profile-button">
+        Delete Profile
+      </button>
     );
   };
   
