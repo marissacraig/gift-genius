@@ -137,7 +137,8 @@ db.once('open', async () => {
   ]);
 
   console.log('items seeded');
-
+  console.log(`items[0]._id = ${items[0]._id}`)
+  
   const lists = await List.insertMany([
     {
       title: 'Christmas 2023',

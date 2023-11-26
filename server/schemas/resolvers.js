@@ -23,10 +23,10 @@ const resolvers = {
 
     // list resolvers
     lists: async () => {
-      return await List.find({}).populate('User');
+      return await List.find({}).populate('user').populate('items');
     },
-    list: async(parent, args) => {
-      return await List.findById(args.id).populate('Item');
+    list: async(parent, { listId }) => {
+      return await List.findById(listId).populate('user').populate('items');
     },
 
     // item resolvers
@@ -39,6 +39,7 @@ const resolvers = {
 
   },
   Mutation: {
+    // user
     addUser: async (parent, args) => {
       const user = await User.create(args);
       const token = signToken(user);
@@ -74,7 +75,7 @@ const resolvers = {
 
     // deleteUser by context user id
 
-
+    // friends
     sendFriendRequest: async (parent, args, context) => {
       if (context.user) {
         return User.findOneAndUpdate(
