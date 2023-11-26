@@ -1,11 +1,14 @@
-const { User } = require('../models');
+const { User, List, Item } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
 const resolvers = {
   Query: {
-    
-    user: async (parent, args, context) => {
+    // user resolvers
+    users: async () => {
+      return await User.find({});
+    },
+    me: async (parent, args, context) => {
       if (context.user) {
         const user = await User.findById(context.user._id);
 
@@ -13,6 +16,25 @@ const resolvers = {
       }
 
       throw AuthenticationError;
+    },
+    user: async (parents, { userId }) => {
+      return User.findOne({ _id: userId });
+    },
+
+    // list resolvers
+    lists: async () => {
+      return await List.find({}).populate('User');
+    },
+    list: async(parent, args) => {
+      return await List.findById(args.id).populate('Item');
+    },
+
+    // item resolvers
+    items: async () => {
+      return await Item.find({});
+    },
+    item: async(parent, args) => {
+      return await Item.findById(args.id);
     }
 
   },
@@ -48,7 +70,38 @@ const resolvers = {
       const token = signToken(user);
 
       return { token, user };
-    }
+    },
+
+    // deleteUser by context user id
+
+
+    sendFriendRequest: async (parent, args, context) => {
+      if (context.user) {
+        return User.findOneAndUpdate(
+          { _id: args.userId },
+          {
+            $addToSet: { friendRequests: User.findById(context.user._id)}
+          },
+          { new: true }
+        );
+      }
+      throw AuthenticationError;
+    },
+
+    // addList: async (parent, args) => {
+    //   return await List.create(args);
+    // }
+
+    // updateList by id
+
+    // deleteList by id
+
+
+    // addItem
+
+    // updateItem by id
+
+    // deleteItem by id
   }
 };
 
