@@ -33,8 +33,8 @@ const resolvers = {
     items: async () => {
       return await Item.find({});
     },
-    item: async(parent, args) => {
-      return await Item.findById(args.id);
+    item: async(parent, { itemId }) => {
+      return await Item.findById(itemId);
     }
 
   },
