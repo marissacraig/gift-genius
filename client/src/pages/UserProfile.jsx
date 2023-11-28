@@ -1,6 +1,6 @@
-import UserInfo from '../components/User Info';
-import GiftHistory from '../components/Gift History';
-import DeleteProfileButton from '../components/Delete Profile Button';
+import UserInfo from '../components/UserInfo';
+import GiftHistory from '../components/GiftHistory';
+import DeleteProfileButton from '../components/DeleteProfileButton';
 import UserAvatar from '../components/Avatar';
 
 
