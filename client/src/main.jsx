@@ -10,6 +10,7 @@ import Signup from './pages/Signup';
 import FriendProfile from './pages/FriendProfile.jsx';
 import Friends from './pages/Friends.jsx';
 import UserProfile from './pages/UserProfile.jsx';
+import Gifts from './pages/Gifts.jsx';
 
 
 const router = createBrowserRouter([
@@ -37,8 +38,8 @@ const router = createBrowserRouter([
         path: '/userprofile',
         element: <UserProfile />
       }, {
-        path: '/giftlist',
-        element: <GiftList />
+        path: '/gifts',
+        element: <Gifts />
       }
     ]
   }
