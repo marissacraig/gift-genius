@@ -1,6 +1,6 @@
 import "./index.css"
 
-import { useGiftContext } from "../utils/GiftContext"
+import { useGiftContext } from "../../utils/GiftContext";
 
 const GiftList = () => {
   const [state, dispatch] = useGiftContext();
