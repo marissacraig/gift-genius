@@ -14,11 +14,7 @@ const Home = () => {
   }
 
   const me = data?.me || {};
-  for (const prop in me) {
-    console.log(`${prop}: ${me[prop]}`)
-  }
 
-  console.log(me.events);
   if (Auth.loggedIn()) {
     return (
       <div className="container">

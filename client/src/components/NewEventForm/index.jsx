@@ -10,7 +10,18 @@ const NewEventForm = () => {
 
   const handleFormSubmit = async (event) => {
     event.preventDefault();
-    console.log("new event form submitted");
+    try {
+      const mutationResponse = await addEvent({
+        variables: {
+          userId: auth.getProfile().data._id,
+          title: formState.title
+        }
+      });
+      const newEventId = mutationResponse.data.addEvent._id;
+      window.location = `/events/${newEventId}`;
+    } catch (err) {
+      console.error(err);
+    }
   }
 
   const handleChange = (event) => {
