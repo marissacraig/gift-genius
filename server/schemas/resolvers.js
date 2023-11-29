@@ -37,8 +37,8 @@ const resolvers = {
     events: async () => {
       return await Event.find({}).populate('items');
     },
-    event: async(parent, { listId }) => {
-      return await Event.findById(listId).populate('items');
+    event: async(parent, { eventId }) => {
+      return await Event.findById(eventId).populate('items');
     },
 
     // item resolvers
@@ -122,9 +122,11 @@ const resolvers = {
         { new: true }
       );
       return newItem;
-    }
+    },
 
-    // updateItem by id
+    updateItem: async (parent, args) => {
+      return await Item.findByIdAndUpdate(args.itemId, args, { new: true });
+    }
 
     // deleteItem by id
   }

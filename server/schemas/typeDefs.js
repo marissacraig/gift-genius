@@ -85,6 +85,17 @@ const typeDefs = `
       fulfilled: Boolean,
       quantity: Int
     ): Item
+
+    updateItem(
+      itemId: String!,
+      name: String,
+      url: String,
+      image: String,
+      price: Float,
+      wishability: Int,
+      fulfilled: Boolean,
+      quantity: Int
+    ): Item
   }
 `;
 
