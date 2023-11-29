@@ -1,6 +1,6 @@
 import { useQuery } from '@apollo/client';
 
-import NewEventForm from '../components/ModalNewEventForm';
+import ModalNewEvent from '../components/ModalNewEvent';
 
 import { QUERY_ME } from '../utils/queries';
 
@@ -23,7 +23,7 @@ const Home = () => {
     return (
       <div className="container">
         <h1>My Gift Lists</h1>
-        <NewEventForm />
+        <ModalNewEvent />
         {me.events[0] ? me.events.map(event => (
           <div key={event._id}>
             {event.title}

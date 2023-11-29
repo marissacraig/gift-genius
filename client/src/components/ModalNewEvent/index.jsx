@@ -3,13 +3,13 @@
 
 import React, { useState } from 'react';
 import { Button, Modal } from 'antd';
-const NewEventForm = () => {
+
+import NewEventForm from '../NewEventForm';
+
+const ModalNewEvent = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const showModal = () => {
     setIsModalOpen(true);
-  };
-  const handleOk = () => {
-    setIsModalOpen(false);
   };
   const handleCancel = () => {
     setIsModalOpen(false);
@@ -17,14 +17,12 @@ const NewEventForm = () => {
   return (
     <>
       <Button type="primary" onClick={showModal}>
-        Open Modal
+        + Create new list
       </Button>
-      <Modal title="Basic Modal" open={isModalOpen} onOk={handleOk} onCancel={handleCancel}>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
-        <p>Some contents...</p>
+      <Modal title="Create a new list" open={isModalOpen} footer={null} onCancel={handleCancel}>
+        <NewEventForm />
       </Modal>
     </>
   );
 };
-export default NewEventForm;
+export default ModalNewEvent;
