@@ -37,8 +37,8 @@ const resolvers = {
     events: async () => {
       return await Event.find({}).populate('items');
     },
-    event: async(parent, { listId }) => {
-      return await Event.findById(listId).populate('items');
+    event: async(parent, { eventId }) => {
+      return await Event.findById(eventId).populate('items');
     },
 
     // item resolvers
@@ -85,7 +85,9 @@ const resolvers = {
       return { token, user };
     },
 
-    // deleteUser by context user id
+    deleteUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
 
     // friends
     // sendFriendRequest: async (parent, args, context) => {
@@ -101,20 +103,38 @@ const resolvers = {
     //   throw AuthenticationError;
     // },
 
-    // addList: async (parent, args) => {
-    //   return await List.create(args);
-    // }
+    addEvent: async (parent, args) => {
+      return await Event.create(args);
+    },
 
-    // updateList by id
+    updateEvent: async (parent, args) => {
+      return await Event.findByIdAndUpdate(args.eventId, args, { new: true }).populate('items');
+    },
 
-    // deleteList by id
+    deleteEvent: async (parent, { eventId }) => {
+      return await Event.findByIdAndDelete({ _id: eventId }).populate('items');
+    },
 
 
-    // addItem
+    addItem: async (parent, args) => {
+      const newItem = await Item.create(args);
+      await Event.findOneAndUpdate(
+        { _id: args.eventId },
+        {
+          $addToSet: { items: newItem._id }
+        },
+        { new: true }
+      );
+      return newItem;
+    },
 
-    // updateItem by id
+    updateItem: async (parent, args) => {
+      return await Item.findByIdAndUpdate(args.itemId, args, { new: true });
+    },
 
-    // deleteItem by id
+    deleteItem: async (parent, { itemId }) => {
+      return await Item.findOneAndDelete({ _id: itemId });
+    }
   }
 };
 
