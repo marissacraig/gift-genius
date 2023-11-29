@@ -33,12 +33,12 @@ const resolvers = {
       return User.findOne({ _id: userId });
     },
 
-    // list resolvers
+    // event resolvers
     events: async () => {
-      return await List.find({}).populate('items');
+      return await Event.find({}).populate('items');
     },
     event: async(parent, { listId }) => {
-      return await List.findById(listId).populate('items');
+      return await Event.findById(listId).populate('items');
     },
 
     // item resolvers

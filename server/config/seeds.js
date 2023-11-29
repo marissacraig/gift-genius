@@ -1,9 +1,9 @@
 const db = require('./connection');
-const { User, List, Item } = require('../models');
+const { User, Event, Item } = require('../models');
 const cleanDB = require('./cleanDB');
 
 db.once('open', async () => {
-  await cleanDB('List', 'lists');
+  await cleanDB('Event', 'events');
   await cleanDB('Item', 'items');
   await cleanDB('User', 'users');
 
@@ -139,55 +139,45 @@ db.once('open', async () => {
   console.log('items seeded');
   console.log(`items[0]._id = ${items[0]._id}`)
   
-  // const lists = await List.insertMany([
-  //   {
-  //     title: 'Christmas 2023',
-  //     user: user0,
-  //     private: false,
-  //     items: [ 
-  //       items[0]._id, 
-  //       items[1]._id,
-  //       items[5]._id,
-  //       items[7]._id,
-  //       items[9]._id,
-  //       items[11]._id,
-  //     ]
-  //   },
-  //   { 
-  //     title: 'bday',
-  //     user: user1,
-  //     private: true,
-  //     items: [
-  //       items[2]._id,
-  //       items[3]._id,
-  //       items[4]._id,
-  //       items[6]._id,
-  //       items[8]._id,
-  //       items[10]._id
-  //     ]
-  //   }
-  // ]);
+  const events = await Event.insertMany([
+    {
+      title: 'Christmas 2023',
+      items: [ 
+        items[0]._id, 
+        items[1]._id,
+        items[5]._id,
+        items[7]._id,
+        items[9]._id,
+        items[11]._id,
+      ]
+    },
+    { 
+      title: 'bday',
+      items: [
+        items[2]._id,
+        items[3]._id,
+        items[4]._id,
+        items[6]._id,
+        items[8]._id,
+        items[10]._id
+      ]
+    }
+  ]);
 
 
-  // User.updateOne(user0, {
-  //   lists: [
-  //     lists[0]._id
-  //   ],
-  //   savedLists: [
-  //     lists[1]._id
-  //   ]
-  // });
+  User.updateOne(user0, {
+    events: [
+      events[0]._id
+    ]
+  });
 
-  // User.updateOne(user1, {
-  //   lists: [
-  //     lists[1]._id
-  //   ],
-  //   savedLists: [
-  //     lists[0]._id
-  //   ]
-  // })
+  User.updateOne(user1, {
+    events: [
+      events[1]._id
+    ]
+  });
  
-  console.log('lists seeded');
+  console.log('events seeded');
 
   process.exit();
 });

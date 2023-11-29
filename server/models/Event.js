@@ -8,9 +8,6 @@ const eventSchema = new Schema({
     maxlength: 60,
     trim: true,
   },
-  private: {
-    type: Boolean,
-  },
   items: [
     {
       type: Schema.Types.ObjectId,
