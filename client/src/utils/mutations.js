@@ -11,7 +11,6 @@ export const LOGIN = gql`
   }
 `;
 
-
 export const ADD_USER = gql`
   mutation addUser(
     $username: String!
@@ -31,6 +30,21 @@ export const ADD_USER = gql`
       user {
         _id
       }
+    }
+  }
+`;
+
+export const ADD_EVENT = gql`
+  mutation addEvent(
+    $userId: String!
+    $title: String!    
+  ) {
+    addEvent(
+      userId: $userId
+      title: $title
+    ) {
+      _id
+      title
     }
   }
 `;

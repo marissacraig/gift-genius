@@ -1,5 +1,7 @@
 import { useQuery } from '@apollo/client';
 
+import ModalNewEvent from '../components/ModalNewEvent';
+
 import { QUERY_ME } from '../utils/queries';
 
 import Auth from "../utils/auth";
@@ -12,18 +14,15 @@ const Home = () => {
   }
 
   const me = data?.me || {};
-  for (const prop in me) {
-    console.log(`${prop}: ${me[prop]}`)
-  }
-  
-  console.log(me.events);
+
   if (Auth.loggedIn()) {
     return (
       <div className="container">
         <h1>My Gift Lists</h1>
+        <ModalNewEvent />
         {me.events[0] ? me.events.map(event => (
           <div key={event._id}>
-            {event.title}
+            <a href={`events/${event._id}`}>{event.title}</a>
           </div>
         )) : <p>No gift lists</p>} 
       </div>

@@ -11,6 +11,7 @@ import FriendProfile from './pages/FriendProfile.jsx';
 import Friends from './pages/Friends.jsx';
 import UserProfile from './pages/UserProfile.jsx';
 import Gifts from './pages/Gifts.jsx';
+import Event from './pages/Event.jsx';
 
 
 const router = createBrowserRouter([
@@ -40,6 +41,9 @@ const router = createBrowserRouter([
       }, {
         path: '/gifts',
         element: <Gifts />
+      }, {
+        path: '/events/:eventId',
+        element: <Event />
       }
     ]
   }
