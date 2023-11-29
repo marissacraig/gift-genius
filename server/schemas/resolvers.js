@@ -85,7 +85,9 @@ const resolvers = {
       return { token, user };
     },
 
-    // deleteUser by context user id
+    deleteUser: async (parent, { userId }) => {
+      return User.findOneAndDelete({ _id: userId });
+    },
 
     // friends
     // sendFriendRequest: async (parent, args, context) => {

@@ -65,6 +65,9 @@ const typeDefs = `
       avatar: String
     ): User
     
+    deleteUser(
+      userId: String!
+    ): User
 
     addEvent(
       title: String!
