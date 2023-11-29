@@ -1,7 +1,7 @@
 
 import { useQuery } from '@apollo/client';
 import UserInfo from '../components/UserInfo';
-import GiftHistory from '../components/GiftHistory';
+// import GiftHistory from '../components/GiftHistory';
 import DeleteProfileButton from '../components/DeleteProfileButton';
 import UserAvatar from '../components/Avatar';
 
@@ -34,7 +34,7 @@ const UserProfile = () => {
         email={me.email}
       />
 
-      <GiftHistory/>
+      {/* <GiftHistory/> */}
 
       <DeleteProfileButton/>
 
