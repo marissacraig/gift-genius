@@ -79,6 +79,10 @@ const typeDefs = `
       title: String
     ): Event
 
+    deleteEvent(
+      eventId: String!
+    ): Event
+
     addItem(
       eventId: String!,
       name: String!,

@@ -111,7 +111,9 @@ const resolvers = {
       return await Event.findByIdAndUpdate(args.eventId, args, { new: true }).populate('items');
     },
 
-    // deleteList by id
+    deleteEvent: async (parent, { eventId }) => {
+      return await Event.findByIdAndDelete({ _id: eventId }).populate('items');
+    },
 
 
     addItem: async (parent, args) => {
