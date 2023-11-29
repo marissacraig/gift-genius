@@ -27,15 +27,16 @@ export const QUERY_USERS = gql`
 `;
 
 export const QUERY_USER = gql`
-  query user($userId: ID!) {
+  query User($userId: ID!) {
     user(userId: $userId) {
       _id
       name
       username
       avatar
-      lists
-      savedLists
-      # birthday
+      events {
+        _id
+        title
+      }
     }
   }
 `;
@@ -48,8 +49,38 @@ export const QUERY_ME = gql`
       username
       avatar
       email
+      events {
+        _id
+        title
+      }
     }
   }
 `;
 
+export const QUERY_EVENTS = gql`
+  query Events {
+    events {
+      _id
+      title
+    }
+  }
+`;
 
+export const QUERY_EVENT = gql`
+  query Event($eventId: ID!) {
+    event(eventId: $eventId) {
+      _id
+      title
+      items {
+        _id
+        name
+        url
+        image
+        price
+        wishability
+        fulfilled
+        quantity
+      }
+    }
+  }
+`;

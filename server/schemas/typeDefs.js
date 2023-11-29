@@ -14,7 +14,6 @@ const typeDefs = `
   type Event {
     _id: ID!
     title: String!
-    private: Boolean
     items: [Item]
   }
 
@@ -62,7 +61,7 @@ const typeDefs = `
       name: String, 
       email: String, 
       password: String, 
-      avatar: String
+      avatar: String,
     ): User
     
     deleteUser(
@@ -71,6 +70,7 @@ const typeDefs = `
 
 
     addEvent(
+      userId: String!
       title: String!
     ): Event
 

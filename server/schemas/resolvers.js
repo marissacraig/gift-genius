@@ -8,7 +8,7 @@ const resolvers = {
     users: async () => {
       return await User.find({}).populate({
         path: 'events',
-        populate: { path: "items", model: 'item'}
+        populate: { path: "items", model: 'Item'}
       });
 
 
@@ -19,7 +19,7 @@ const resolvers = {
       if (context.user) {
         const user = await User.findById(context.user._id).populate({
           path: 'events',
-          populate: { path: "items", model: 'item'}
+          populate: { path: "items", model: 'Item'}
         });
         console.log(`Inside the user stuff: ${user}`);
 
@@ -104,7 +104,15 @@ const resolvers = {
     // },
 
     addEvent: async (parent, args) => {
-      return await Event.create(args);
+      const newEvent = await Event.create(args);
+      await User.findOneAndUpdate(
+        { _id: args.userId },
+        {
+          $addToSet: { events: newEvent._id }
+        },
+        { new: true }
+      );
+      return newEvent;
     },
 
     updateEvent: async (parent, args) => {
