@@ -23,9 +23,13 @@ const itemSchema = new Schema({
   fulfilled: {
     type: Boolean,
     default: false,
+  },
+  quantity: {
+    type: Number
   }
 });
 
 const Item = model('Item', itemSchema);
 
 module.exports = Item;
+

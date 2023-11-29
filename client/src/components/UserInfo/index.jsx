@@ -1,9 +1,11 @@
 import "./index.css"
 
-const UserInfo = () => {
+const UserInfo = ({ name, username, email } ) => {
     return (
       <div className="container">
-        userInfo here
+        <p>Name: {name}</p>
+        <p>Username: {username}</p>
+        <p>Email: {email}</p>
       </div>
     );
   };
