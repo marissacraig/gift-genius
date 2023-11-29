@@ -2,10 +2,10 @@ import { createContext, useContext, useReducer } from 'react';
 
 import reducer from './reducers';
 
-// Initialize new context for students
+// Initialize new context for gifts
 const GiftContext = createContext();
 
-// We create a custom hook to immediately pass the student context value ({ students, majors } - see line 36) to any consumer component which invokes it
+// We create a custom hook to immediately pass the gift context value ({ gifts, prices } - see line 36) to any consumer component which invokes it
 export const useGiftContext = () => useContext(GiftContext);
 
 // The provider is responsible for creating our state, updating the state, and persisting values to the children

@@ -1,4 +1,4 @@
-
+//conditional rendering so this page will show even if not logged in
 
 const Gifts = () => {
     return (
