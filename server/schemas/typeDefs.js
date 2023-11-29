@@ -45,10 +45,38 @@ const typeDefs = `
   }
 
   type Mutation {
-    addUser(username: String!, name: String!, email: String!, password: String!, avatar: String): Auth
-    login(email: String!, password: String!): Auth
-    updateUser(name: String, email: String, password: String, avatar: String): User
-    # addList(title: String!, userId: ID!, private: Boolean, items: [Item]): List
+    addUser(
+      username: String!, 
+      name: String!, 
+      email: String!, 
+      password: String!, 
+      avatar: String
+    ): Auth
+
+    login(
+      email: String!, 
+      password: String!
+    ): Auth
+
+    updateUser(
+      name: String, 
+      email: String, 
+      password: String, 
+      avatar: String
+    ): User
+    
+    addEvent(title: String!): Event
+
+    addItem(
+      eventId: String!,
+      name: String!,
+      url: String,
+      image: String,
+      price: Float,
+      wishability: Int,
+      fulfilled: Boolean,
+      quantity: Int
+    ): Item
   }
 `;
 

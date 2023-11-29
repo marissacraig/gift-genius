@@ -101,16 +101,26 @@ const resolvers = {
     //   throw AuthenticationError;
     // },
 
-    // addList: async (parent, args) => {
-    //   return await List.create(args);
-    // }
+    addEvent: async (parent, args) => {
+      return await Event.create(args);
+    },
 
     // updateList by id
 
     // deleteList by id
 
 
-    // addItem
+    addItem: async (parent, args) => {
+      const newItem = await Item.create(args);
+      await Event.findOneAndUpdate(
+        { _id: args.eventId },
+        {
+          $addToSet: { items: newItem._id }
+        },
+        { new: true }
+      );
+      return newItem;
+    }
 
     // updateItem by id
 
