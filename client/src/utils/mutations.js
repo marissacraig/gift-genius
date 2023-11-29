@@ -48,3 +48,34 @@ export const ADD_EVENT = gql`
     }
   }
 `;
+
+export const ADD_ITEM = gql`
+  mutation addItem(
+    $eventId: String!
+    $name: String!
+    $url: String,
+    $price: Float,
+    $wishability: Int,
+    $fulfilled: Boolean,
+    $quantity: Int
+  ) {
+    addItem(
+      eventId: $eventId
+      name: $name
+      url: $url
+      price: $price
+      wishability: $wishability
+      fulfilled: $fulfilled
+      quantity: $quantity
+    ) {
+      _id
+      name
+      url
+      image
+      price
+      wishability
+      fulfilled
+      quantity
+    }
+  }
+`;
