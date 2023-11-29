@@ -65,7 +65,15 @@ const typeDefs = `
       avatar: String
     ): User
     
-    addEvent(title: String!): Event
+
+    addEvent(
+      title: String!
+    ): Event
+
+    updateEvent(
+      eventId: String!,
+      title: String
+    ): Event
 
     addItem(
       eventId: String!,

@@ -105,7 +105,9 @@ const resolvers = {
       return await Event.create(args);
     },
 
-    // updateList by id
+    updateEvent: async (parent, args) => {
+      return await Event.findByIdAndUpdate(args.eventId, args, { new: true }).populate('items');
+    },
 
     // deleteList by id
 
