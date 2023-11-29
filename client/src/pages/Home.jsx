@@ -22,7 +22,7 @@ const Home = () => {
         <ModalNewEvent />
         {me.events[0] ? me.events.map(event => (
           <div key={event._id}>
-            {event.title}
+            <a href={`events/${event._id}`}>{event.title}</a>
           </div>
         )) : <p>No gift lists</p>} 
       </div>
