@@ -128,9 +128,11 @@ const resolvers = {
 
     updateItem: async (parent, args) => {
       return await Item.findByIdAndUpdate(args.itemId, args, { new: true });
-    }
+    },
 
-    // deleteItem by id
+    deleteItem: async (parent, { itemId }) => {
+      return await Item.findOneAndDelete({ _id: itemId });
+    }
   }
 };
 

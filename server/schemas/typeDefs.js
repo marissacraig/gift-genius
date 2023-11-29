@@ -69,6 +69,7 @@ const typeDefs = `
       userId: String!
     ): User
 
+
     addEvent(
       title: String!
     ): Event
@@ -98,6 +99,10 @@ const typeDefs = `
       wishability: Int,
       fulfilled: Boolean,
       quantity: Int
+    ): Item
+
+    deleteItem(
+      itemId: String!
     ): Item
   }
 `;
