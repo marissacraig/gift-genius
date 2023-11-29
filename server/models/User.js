@@ -32,28 +32,10 @@ const userSchema = new Schema({
   avatar: {
     type: String
   },
-  friends: [
+  events: [
     {
       type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ],
-  friendRequests: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'User'
-    }
-  ],
-  lists: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'List'
-    }
-  ],
-  savedLists: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: 'List'
+      ref: 'Event'
     }
   ]
 });

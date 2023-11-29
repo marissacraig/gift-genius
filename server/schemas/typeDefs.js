@@ -8,16 +8,12 @@ const typeDefs = `
     password: String!
     # birthday: Date (has to be custum scalar??)
     avatar: String
-    friends: [User]
-    friendRequests: [User]
-    lists: [List]
-    savedLists: [List]
+    events: [Event]
   }
 
-  type List {
+  type Event {
     _id: ID!
     title: String!
-    user: User
     private: Boolean
     items: [Item]
   }
@@ -30,6 +26,7 @@ const typeDefs = `
     price: Float
     wishability: Int
     fulfilled: Boolean
+    quantity: Int
   }
 
   type Auth {
@@ -41,8 +38,8 @@ const typeDefs = `
     users: [User]
     me: User
     user(userId: ID!): User
-    lists: [List]
-    list(listId: ID!): List
+    events: [Event]
+    event(eventId: ID!): Event
     items: [Item]
     item(itemId: ID!): Item
   }
@@ -51,9 +48,6 @@ const typeDefs = `
     addUser(username: String!, name: String!, email: String!, password: String!, avatar: String): Auth
     login(email: String!, password: String!): Auth
     updateUser(name: String, email: String, password: String, avatar: String): User
-
-    sendFriendRequest(userId: ID!): User
-
     # addList(title: String!, userId: ID!, private: Boolean, items: [Item]): List
   }
 `;

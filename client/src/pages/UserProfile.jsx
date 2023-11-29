@@ -5,21 +5,23 @@ import GiftHistory from '../components/GiftHistory';
 import DeleteProfileButton from '../components/DeleteProfileButton';
 import UserAvatar from '../components/Avatar';
 
-import { QUERY_ME } from '../utils/queries';
+import { QUERY_USER, QUERY_ME } from '../utils/queries';
 
 import auth from '../utils/auth';
 
 const UserProfile = () => {
   const { loading, data } = useQuery(QUERY_ME);
-  const me = data?.me || {};
-
-  console.log(auth.loggedIn())
-
-  console.log(`Query returned: ${data}`);
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  const me = data?.me || {};
+  console.log(`QUERY_ME returned: ${me}`);
+  for (const prop in me) {
+    console.log(`${prop}: ${me[prop]}`)
+  }
+
 
   return (
     <div className="container">

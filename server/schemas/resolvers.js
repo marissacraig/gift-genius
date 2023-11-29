@@ -1,4 +1,4 @@
-const { User, List, Item } = require('../models');
+const { User, Event, Item } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 const stripe = require('stripe')('sk_test_4eC39HqLyjWDarjtT1zdp7dc');
 
@@ -6,14 +6,26 @@ const resolvers = {
   Query: {
     // user resolvers
     users: async () => {
-      return await User.find({});
+      return await User.find({}).populate({
+        path: 'events',
+        populate: { path: "items", model: 'item'}
+      });
+
+
     },
     me: async (parent, args, context) => {
+      console.log(`Inside the me stuff: ${context.user}`);
+      console.log(`Inside the me stuff: ${context.user._id}`);
       if (context.user) {
-        const user = await User.findById(context.user._id);
+        const user = await User.findById(context.user._id).populate({
+          path: 'events',
+          populate: { path: "items", model: 'item'}
+        });
+        console.log(`Inside the user stuff: ${user}`);
 
         return user;
       }
+      console.log(`Broken undefined:`);
 
       throw AuthenticationError;
     },
@@ -22,11 +34,11 @@ const resolvers = {
     },
 
     // list resolvers
-    lists: async () => {
-      return await List.find({}).populate('user').populate('items');
+    events: async () => {
+      return await List.find({}).populate('items');
     },
-    list: async(parent, { listId }) => {
-      return await List.findById(listId).populate('user').populate('items');
+    event: async(parent, { listId }) => {
+      return await List.findById(listId).populate('items');
     },
 
     // item resolvers
@@ -76,18 +88,18 @@ const resolvers = {
     // deleteUser by context user id
 
     // friends
-    sendFriendRequest: async (parent, args, context) => {
-      if (context.user) {
-        return User.findOneAndUpdate(
-          { _id: args.userId },
-          {
-            $addToSet: { friendRequests: User.findById(context.user._id)}
-          },
-          { new: true }
-        );
-      }
-      throw AuthenticationError;
-    },
+    // sendFriendRequest: async (parent, args, context) => {
+    //   if (context.user) {
+    //     return User.findOneAndUpdate(
+    //       { _id: args.userId },
+    //       {
+    //         $addToSet: { friendRequests: User.findById(context.user._id)}
+    //       },
+    //       { new: true }
+    //     );
+    //   }
+    //   throw AuthenticationError;
+    // },
 
     // addList: async (parent, args) => {
     //   return await List.create(args);
