@@ -36,7 +36,7 @@ const UserProfile = () => {
 
       {/* <GiftHistory/> */}
 
-      <DeleteProfileButton/>
+      <DeleteProfileButton userId={me._id}/>
 
     </div>
   );
