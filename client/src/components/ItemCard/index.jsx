@@ -1,11 +1,26 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
+import { Button } from 'antd';
 import "./index.css"
 
 import ModalUpdateItem from '../ModalUpdateItem';
 
+import { UPDATE_ITEM } from '../../utils/mutations'
+
 const ItemCard = ( {item} ) => {
-  const [fulfilled,setFulfilled] = useState(item.fulfilled)
+  const [fulfilled,setFulfilled] = useState(item.fulfilled);
+  const [updateItem, { error }] = useMutation(UPDATE_ITEM);
+
+  const toggleFulfill = async(event) => {
+    setFulfilled(!fulfilled);
+    const mutationResponse = await updateItem({
+      variables: {
+        itemId: item._id,
+        fulfilled: fulfilled
+      }
+    });
+  }
+
   return (
     <div key={item._id} className="item-card">
       <div className="card-header my-2 flex-row space-between">
@@ -35,7 +50,14 @@ const ItemCard = ( {item} ) => {
         )}
 
         {/* Click to mark as fulfilled */}
-        <h3 className="fulfill-button">✔</h3>
+        <Button 
+          type="text"
+          shape="circle"
+          onClick={toggleFulfill}
+          className={item.fulfilled ? 'fulfillButton fulfilled' : 'fulfillButton'}
+        >
+            ✔
+        </Button>
       </div>
     </div>
   );
