@@ -79,3 +79,30 @@ export const ADD_ITEM = gql`
     }
   }
 `;
+
+export const UPDATE_ITEM = gql`
+  mutation updateItem(
+    $itemId: String!,
+    $name: String,
+    $url: String,
+    $price: Float,
+    $fulfilled: Boolean,
+    $quantity: Int
+  ) {
+    updateItem(
+      itemId: $itemId
+      name: $name
+      url: $url
+      price: $price
+      fulfilled: $fulfilled
+      quantity: $quantity
+    ) {
+      _id
+      name
+      url
+      price
+      fulfilled
+      quantity
+    }
+  }
+`;
