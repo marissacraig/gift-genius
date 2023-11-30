@@ -6,9 +6,7 @@ const Gifts = () => {
         <h1>Gift List &#127873;</h1>
 
       </div>
-      <div>
-        
-      </div>
+    
     );
   };
 
