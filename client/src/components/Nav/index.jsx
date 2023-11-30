@@ -21,7 +21,7 @@ function Nav() {
             </Link>
           </li>
           <li className="mx-1">
-            <Link to="/events/:eventId">
+            <Link to="/events">
               Events
             </Link>
           </li>
